@@ -27,7 +27,7 @@ namespace XPathFunctions
         }
 
         [TestMethod]
-        public void FindXpathByStartwith()
+        public void FindXpathByStartsWith()
         {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "http://www.ankpro.com/Account/Login";
@@ -37,6 +37,22 @@ namespace XPathFunctions
 
             //click on remember me
             driver.FindElement(By.XPath(".//input[starts-with(@id, 'Rem')]")).Click();
+            Thread.Sleep(3000);
+
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void FindXpathByContains()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://www.ankpro.com/Account/Login";
+            // full screen
+            driver.Manage().Window.FullScreen();
+            Thread.Sleep(3000);
+
+            //click on remember me
+            driver.FindElement(By.XPath(".//input[contains(@id, 'Me')]")).Click();
             Thread.Sleep(3000);
 
             driver.Quit();
