@@ -9,7 +9,7 @@ namespace XPathFunctions
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void FindXpathByText()
         {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "https://techexpozed.co.nz";
@@ -24,6 +24,22 @@ namespace XPathFunctions
             //find xpath by text 
             var str1 = driver.FindElement(By.XPath(".//h6[text()='Our company']")).Text;
             Console.WriteLine(str1);
+        }
+
+        [TestMethod]
+        public void FindXpathByStartwith()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://www.ankpro.com/Account/Login";
+            // full screen
+            driver.Manage().Window.FullScreen();
+            Thread.Sleep(3000);
+
+            //click on remember me
+            driver.FindElement(By.XPath(".//input[starts-with(@id, 'Rem')]")).Click();
+            Thread.Sleep(3000);
+
+            driver.Quit();
         }
     }
 }
