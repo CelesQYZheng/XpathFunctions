@@ -64,8 +64,8 @@ namespace XPathFunctions
             IWebDriver driver = new ChromeDriver();
             driver.Url = "http://www.ankpro.com/Account/Login";
             // full screen
-            driver.Manage().Window.FullScreen();
-            Thread.Sleep(3000);
+            //driver.Manage().Window.FullScreen();
+            Thread.Sleep(2000);
 
             //click on remember me 
             driver.FindElement(By.XPath(".//input[@type='checkbox' and not(@checked)]")).Click();
@@ -78,11 +78,14 @@ namespace XPathFunctions
         public void FindXpathUsingLast()
         {
             IWebDriver driver = new ChromeDriver();
-            driver.Url = "https://docs.python.org/3/library/functions.html";
-            // full screen
-            driver.Manage().Window.FullScreen();
+            driver.Url = "http://www.ankpro.com/Home/Training";
+            // maximize screen
+            driver.Manage().Window.Maximize();
             Thread.Sleep(3000);
-            driver.FindElement(By.XPath(".//tbody/tr[last()]")).Click();
+
+            // last element on the table
+            var lastElement = driver.FindElement(By.XPath(".//tbody/tr[last()]")).Text;
+            Console.WriteLine(lastElement);
             Thread.Sleep(3000);
 
             driver.Quit();
