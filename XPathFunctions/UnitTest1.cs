@@ -90,5 +90,22 @@ namespace XPathFunctions
 
             driver.Quit();
         }
+
+        [TestMethod]
+        public void FindXpathUsingLast2()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://www.ankpro.com/Home/Training";
+            // maximize screen
+            driver.Manage().Window.Maximize();
+            Thread.Sleep(3000);
+
+            // last element on the table
+            var lastElement = driver.FindElement(By.XPath(".//tbody/tr[last()-1]")).Text;
+            Console.WriteLine(lastElement);
+            Thread.Sleep(3000);
+
+            driver.Quit();
+        }
     }
 }
