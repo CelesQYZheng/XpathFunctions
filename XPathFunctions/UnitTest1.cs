@@ -124,5 +124,19 @@ namespace XPathFunctions
 
             driver.Quit();
         }
+
+        [TestMethod]
+        public void FindXpathUsingPosition()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://www.ankpro.com/Account/Register";
+            // maximize screen
+            driver.Manage().Window.Maximize();
+            Thread.Sleep(3000);
+            driver.FindElement(By.XPath("(.//input[@type='password'])[position()=1]")).SendKeys("abcde");
+            Thread.Sleep(3000);
+
+            driver.Quit();
+        }
     }
 }
