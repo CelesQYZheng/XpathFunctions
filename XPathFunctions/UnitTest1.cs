@@ -1,6 +1,6 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 namespace XPathFunctions
@@ -74,10 +74,18 @@ namespace XPathFunctions
             driver.Quit();
         }
 
-        //[TestMethod]
-        //public void FindXpathUsingLast()
-        //{
+        [TestMethod]
+        public void FindXpathUsingLast()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "https://docs.python.org/3/library/functions.html";
+            // full screen
+            driver.Manage().Window.FullScreen();
+            Thread.Sleep(3000);
+            driver.FindElement(By.XPath(".//tbody/tr[last()]")).Click();
+            Thread.Sleep(3000);
 
-        //}
+            driver.Quit();
+        }
     }
 }
