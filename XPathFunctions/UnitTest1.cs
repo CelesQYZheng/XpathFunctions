@@ -9,7 +9,7 @@ namespace XPathFunctions
     public class UnitTest1
     {
         [TestMethod]
-        public void FindXpathByText()
+        public void FindXpathUsingText()
         {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "https://techexpozed.co.nz";
@@ -27,7 +27,7 @@ namespace XPathFunctions
         }
 
         [TestMethod]
-        public void FindXpathByStartsWith()
+        public void FindXpathUsingStartsWith()
         {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "http://www.ankpro.com/Account/Login";
@@ -35,7 +35,7 @@ namespace XPathFunctions
             driver.Manage().Window.FullScreen();
             Thread.Sleep(3000);
 
-            //click on remember me
+            //click on remember me 
             driver.FindElement(By.XPath(".//input[starts-with(@id, 'Rem')]")).Click();
             Thread.Sleep(3000);
 
@@ -43,7 +43,7 @@ namespace XPathFunctions
         }
 
         [TestMethod]
-        public void FindXpathByContains()
+        public void FindXpathUsingContains()
         {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "http://www.ankpro.com/Account/Login";
@@ -57,5 +57,27 @@ namespace XPathFunctions
 
             driver.Quit();
         }
+
+        [TestMethod]
+        public void FindXpathUsingNot()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "http://www.ankpro.com/Account/Login";
+            // full screen
+            driver.Manage().Window.FullScreen();
+            Thread.Sleep(3000);
+
+            //click on remember me 
+            driver.FindElement(By.XPath(".//input[@type='checkbox' and not(@checked)]")).Click();
+            Thread.Sleep(3000);
+
+            driver.Quit();
+        }
+
+        //[TestMethod]
+        //public void FindXpathUsingLast()
+        //{
+
+        //}
     }
 }
